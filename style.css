@@ -1,78 +1,344 @@
+/* 基础样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* 日历样式 */
+.calendar-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  aspect-ratio: 2;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: white;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.calendar-day:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-day.today {
+  background-color: #e3f2fd;
+  font-weight: bold;
+}
+
+.calendar-day.other-month {
+  color: #ccc;
+}
+
+.calendar-day.has-event {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+/* 内容区域样式 */
+.content-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* 公告部分样式 */
+.announcement-section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+th {
+  background: #f8f9fa;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+/* 设置表格列宽 */
+th:nth-child(1), td:nth-child(1) { width: 100px; } /* 日期 */
+th:nth-child(2), td:nth-child(2) { width: 80px; }  /* 媒体 */
+th:nth-child(3), td:nth-child(3) { width: 120px; } /* 标题 */
+th:nth-child(4), td:nth-child(4) { width: auto; }   /* 内容 */
+th:nth-child(5), td:nth-child(5) { width: 150px; }  /* 反馈 */
+
+/* 文章部分样式 */
+.articles-section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.articles-container {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 1rem;
+}
+
+.article-group {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article-group h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.article-item {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.article-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.article-title {
+  color: #333;
+}
+
+/* 反馈按钮样式 */
+.feedback-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+.like-btn,
+.dislike-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 60px;
+}
+
+.like-btn:hover,
+.like-btn.active {
+  background-color: #E8F5E9;
+  color: #4CAF50;
+}
+
+.dislike-btn:hover,
+.dislike-btn.active {
+  background-color: #FFEBEE;
+  color: #F44336;
+}
+
+.like-count,
+.dislike-count {
+  font-size: 0.9rem;
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* 自定义滚动条 */
+.table-container::-webkit-scrollbar,
+.articles-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track,
+.articles-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb,
+.articles-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover,
+.articles-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 模态框样式 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .content-sections {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  
-  header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
   }
-  
-  h1 {
-    margin: 0;
+
+  .calendar-container {
+    padding: 0.5rem;
   }
-  
-  .calendar-box {
-    text-align: center;
-    margin: 1em;
+
+  .calendar-day {
+    font-size: 0.8rem;
   }
-  
-  .content-box {
-    display: flex;
-    justify-content: space-around;
-    padding: 1em;
+
+  td, th {
+    padding: 8px;
+    font-size: 0.9rem;
   }
-  
-  .left-box, .right-box {
-    background-color: white;
-    padding: 1em;
-    border-radius: 8px;
-    width: 40%;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 6px;
-    border: 1px solid #ccc;
-  }
-  
-  .sub-box {
-    margin-bottom: 1em;
-  }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 10%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-  }
-  
-  .modal-content {
-    background-color: white;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-  }
-  
-  .close {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
+}

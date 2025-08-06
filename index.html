@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BriefBox</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <header>
@@ -12,45 +13,255 @@
   </header>
 
   <main>
-    <div class="calendar-box">
-      <button onclick="openCalendar()">📅 日历</button>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth" onclick="updateMonth(-1)">&lt;</button>
+        <h2 id="currentMonth">2024年2月</h2>
+        <button id="nextMonth" onclick="updateMonth(1)">&gt;</button>
+      </div>
+      <div class="weekdays">
+        <div>日</div>
+        <div>一</div>
+        <div>二</div>
+        <div>三</div>
+        <div>四</div>
+        <div>五</div>
+        <div>六</div>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
     </div>
 
-    <div class="content-box">
-      <div class="left-box">
-        <h2>媒体公告信息</h2>
+    <div class="content-sections">
+      <section class="announcement-section">
+        <h2>📢 媒体公告信息</h2>
+        <div class="table-container">
         <table>
-          <tr><th>#</th><th>日期</th><th>标题</th><th>内容</th></tr>
-          <tr><td>1</td><td>25/08/25</td><td>标题1</td><td>内容1</td></tr>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>媒体</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>反馈</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-id="announcement_1">
+                <td>2024/02/15</td>
+                <td>抖音</td>
+                <td>春节活动公告</td>
+                <td>关于2024年春节期间平台运营安排的通知...</td>
+                <td class="feedback-cell">
+                  <div class="feedback-buttons">
+                    <button class="like-btn">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="like-count">0</span>
+                    </button>
+                    <button class="dislike-btn">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="dislike-count">0</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="announcement_2">
+                <td>2024/02/14</td>
+                <td>快手</td>
+                <td>算法更新</td>
+                <td>快手电商推荐算法2月份更新说明...</td>
+                <td class="feedback-cell">
+                  <div class="feedback-buttons">
+                    <button class="like-btn">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="like-count">0</span>
+                    </button>
+                    <button class="dislike-btn">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="dislike-count">0</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="announcement_3">
+                <td>2024/02/13</td>
+                <td>小红书</td>
+                <td>平台规则更新</td>
+                <td>关于直播带货新规则的详细说明和实施时间表...</td>
+                <td class="feedback-cell">
+                  <div class="feedback-buttons">
+                    <button class="like-btn">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="like-count">0</span>
+                    </button>
+                    <button class="dislike-btn">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="dislike-count">0</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="announcement_4">
+                <td>2024/02/12</td>
+                <td>淘宝</td>
+                <td>新功能发布</td>
+                <td>淘宝直播间新增AI助手功能，支持实时数据分析...</td>
+                <td class="feedback-cell">
+                  <div class="feedback-buttons">
+                    <button class="like-btn">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="like-count">0</span>
+                    </button>
+                    <button class="dislike-btn">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="dislike-count">0</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="announcement_5">
+                <td>2024/02/11</td>
+                <td>微信</td>
+                <td>视频号更新</td>
+                <td>微信视频号商城新增跨境电商功能，支持全球购物...</td>
+                <td class="feedback-cell">
+                  <div class="feedback-buttons">
+                    <button class="like-btn">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="like-count">0</span>
+                    </button>
+                    <button class="dislike-btn">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="dislike-count">0</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
         </table>
-      </div>
+        </div>
+      </section>
 
-      <div class="right-box">
-        <h2>公众号文章</h2>
-        <div class="sub-box">
-          <h3>cheetah</h3>
-          <ul>
-            <li>25/08/25 - 文章标题A</li>
-            <li>25/08/24 - 文章标题B</li>
-          </ul>
+      <section class="articles-section">
+        <h2>📰 公众号文章</h2>
+        <div class="articles-container">
+          <div class="article-group">
+            <div class="article-header">
+              <h3>🦁 猎豹内部公众号</h3>
+            </div>
+            <div class="article-list">
+              <div class="article-item" data-id="article_1">
+                <div class="article-content">
+                  <span class="article-date">2024/02/15</span>
+                  <span class="article-title">《2024年电商行业趋势分析》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+              <div class="article-item" data-id="article_2">
+                <div class="article-content">
+                  <span class="article-date">2024/02/14</span>
+                  <span class="article-title">《如何提升直播间转化率》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+              <div class="article-item" data-id="article_3">
+                <div class="article-content">
+                  <span class="article-date">2024/02/13</span>
+                  <span class="article-title">《AI在电商中的应用前景》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="article-group">
+            <div class="article-header">
+              <h3>📊 竞品公众号</h3>
+            </div>
+            <div class="article-list">
+              <div class="article-item" data-id="article_4">
+                <div class="article-content">
+                  <span class="article-date">2024/02/15</span>
+                  <span class="article-title">《电商平台数据分析》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+              <div class="article-item" data-id="article_5">
+                <div class="article-content">
+                  <span class="article-date">2024/02/14</span>
+                  <span class="article-title">《直播带货最新趋势》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+              <div class="article-item" data-id="article_6">
+                <div class="article-content">
+                  <span class="article-date">2024/02/13</span>
+                  <span class="article-title">《跨境电商市场分析》</span>
+                </div>
+                <div class="feedback-buttons">
+                  <button class="like-btn">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                  </button>
+                  <button class="dislike-btn">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span class="dislike-count">0</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="sub-box">
-          <h3>others</h3>
-          <ul>
-            <li>25/08/25 - 文章标题X</li>
-            <li>25/08/24 - 文章标题Y</li>
-          </ul>
-        </div>
-      </div>
+      </section>
     </div>
   </main>
 
-  <!-- 弹窗 -->
-  <div id="calendarModal" class="modal">
+  <div id="eventsModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeCalendar()">&times;</span>
-      <h2>活动日历</h2>
-      <p>这里可以展示跑会场信息或日历功能。</p>
+      <!-- 模态框内容由JavaScript生成 -->
     </div>
   </div>
 
