@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BriefBox</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>BriefBox</h1>
+  </header>
+
+  <main>
+    <div class="calendar-box">
+      <button onclick="openCalendar()">📅 日历</button>
+    </div>
+
+    <div class="content-box">
+      <div class="left-box">
+        <h2>媒体公告信息</h2>
+        <table>
+          <tr><th>#</th><th>日期</th><th>标题</th><th>内容</th></tr>
+          <tr><td>1</td><td>25/08/25</td><td>标题1</td><td>内容1</td></tr>
+        </table>
+      </div>
+
+      <div class="right-box">
+        <h2>公众号文章</h2>
+        <div class="sub-box">
+          <h3>cheetah</h3>
+          <ul>
+            <li>25/08/25 - 文章标题A</li>
+            <li>25/08/24 - 文章标题B</li>
+          </ul>
+        </div>
+        <div class="sub-box">
+          <h3>others</h3>
+          <ul>
+            <li>25/08/25 - 文章标题X</li>
+            <li>25/08/24 - 文章标题Y</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 弹窗 -->
+  <div id="calendarModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCalendar()">&times;</span>
+      <h2>活动日历</h2>
+      <p>这里可以展示跑会场信息或日历功能。</p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
